@@ -25,3 +25,8 @@ A catalog can have one or more products.
 A product can have one or more owners.
 A Campaign can be tied to one ore more Products.
 A product can have none or many accounts of either cost and revenue. (But please, if possible you should use your accointing/ledger for this functionality).
+
+TODO
+====
+
+* Implementing the CommonBundle into this. Especially the context system, since it's one of the main reasons of a product master to keep track of how/where/what in the different systems having products. Storing system, object name and external ID here will make it possible to send and retrieve data from each system having products.
