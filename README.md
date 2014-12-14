@@ -10,6 +10,8 @@ It has had one stint of work since then, to make it Symfony 2.3 compatible.
 
 Now I have changed the name to reflect the new company and it also has it's first post on Github as an available project. If this looks interesting, pester me and I'll continue developing it sooner rather than when I need it myself.
 
+If you look at the code it does not really look like the typical Doctrine layout in Entity. This is because I was experimenting with separating Doctrine Entity specific stuff and the Model object itself. This *is* a good idea, but I have been too lazy to keep doing this since.
+
 Components
 ==========
 
