@@ -1,0 +1,43 @@
+{% extends "BisonLabProductMasterBundle::layout.html.twig" %}
+
+{% block content %}
+
+<h1>Product edit</h1>
+
+<form action="{{ path('product_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_widget(edit_form) }}
+    <p>
+        <button type="submit">Edit</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('product') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('product_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+
+<h2>Add product to catalog</h2>
+<form action="{{ path('productcatalog_create') }}" method="post" {{ form_enctype(product_catalog_form) }}>
+    {{ form_widget(product_catalog_form) }}
+    <p>
+        <button type="submit">Add</button>
+    </p>
+</form>
+
+<h2>Add product to campaign</h2>
+<form action="{{ path('productcampaign_create') }}" method="post" {{ form_enctype(product_campaign_form) }}>
+    {{ form_widget(product_campaign_form) }}
+    <p>
+        <button type="submit">Add</button>
+    </p>
+</form>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "BisonLabProductMasterBundle::layout.html.twig" %}
+
+{% block content %}
+
+<h1>Catalog list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Identifier</th>
+            <th>Originating_from</th>
+            <th>External_id</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('catalog_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.name }}</td>
+            <td>{{ entity.description }}</td>
+            <td>{{ entity.identifier }}</td>
+            <td>{{ entity.originatingfrom }}</td>
+            <td>{{ entity.externalid }}</td>
+            <td>
+                <a href="{{ path('catalog_show', { 'id': entity.id }) }}">Show</a>
+                <a href="{{ path('catalog_edit', { 'id': entity.id }) }}">Edit</a>            
+                <a href="{{ path('productcatalog_list_by_catalog', { 'id': entity.id }) }}">Product listing</a>            
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('catalog_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+
+{% endblock %}

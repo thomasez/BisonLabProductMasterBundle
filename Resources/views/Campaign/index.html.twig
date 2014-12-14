@@ -1,0 +1,62 @@
+{% extends "BisonLabProductMasterBundle::layout.html.twig" %}
+
+{% block content %}
+
+<h1>Campaign list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Price</th>
+            <th>Min price</th>
+            <th>Rebate percent</th>
+            <th>Rebate amount</th>
+            <th>Campaign period</th>
+            <th>Campaign_period amount</th>
+            <th>Binding period</th>
+            <th>Binding period amount</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('campaign_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.name }}</td>
+            <td>
+                {% if entity.startdate  %}
+                {{ entity.startdate|date("Y-m-d H:i")  }}
+                {% endif %}
+            </td>
+            <td>
+                {% if entity.enddate  %}
+                {{ entity.enddate|date("Y-m-d H:i")  }}
+                {% endif %}
+            </td>
+            <td>{{ entity.price }}</td>
+            <td>{{ entity.minprice }}</td>
+            <td>{{ entity.rebatepercent }}</td>
+            <td>{{ entity.rebateamount }}</td>
+            <td>{{ entity.campaignperiod }}</td>
+            <td>{{ entity.campaignperiodamount }}</td>
+            <td>{{ entity.bindingperiod }}</td>
+            <td>{{ entity.bindingperiodamount }}</td>
+            <td>                   <a href="{{ path('campaign_show', { 'id': entity.id }) }}">show</a>                   <a href="{{ path('campaign_edit', { 'id': entity.id }) }}">edit</a>            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('campaign_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+
+{% endblock %}

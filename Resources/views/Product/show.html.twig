@@ -1,0 +1,109 @@
+{% extends "BisonLabProductMasterBundle::layout.html.twig" %}
+
+{% block content %}
+
+<h1>Product</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Identifier</th>
+            <td>{{ entity.identifier }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ entity.name }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ entity.description }}</td>
+        </tr>
+        <tr>
+            <th>Long description</th>
+            <td>{{ entity.longdescription }}</td>
+        </tr>
+        <tr>
+            <th>Product type</th>
+            <td>{{ entity.producttype }}</td>
+        </tr>
+        <tr>
+            <th>One time price</th>
+            <td>{{ entity.onetimeprice }}</td>
+        </tr>
+        <tr>
+            <th>Subscription price</th>
+            <td>{{ entity.subscriptionprice }}</td>
+        </tr>
+        <tr>
+            <th>Sale start</th>
+            <td>
+                {% if entity.salestart  %}
+                {{ entity.salestart|date("Y-m-d H:i")  }}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Sale end</th>
+            <td>
+                {% if entity.saleend  %}
+                {{ entity.saleend|date("Y-m-d H:i")  }}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Start date</th>
+            <td>
+                {% if entity.startdate  %}
+                {{ entity.startdate|date("Y-m-d H:i")  }}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>End date</th>
+            <td>
+                {% if entity.enddate  %}
+                {{ entity.enddate|date("Y-m-d H:i")  }}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Created</th>
+            <td>{{ entity.createdat|date("Y-m-d H:i")  }}</td>
+        </tr>
+        <tr>
+            <th>Updated</th>
+            <td>{{ entity.updatedat|date("Y-m-d H:i")  }}</td>
+        </tr>
+    {% for pc in entity.productcatalogs %}
+        <tr>
+            <th>Catalog</th>
+            <td>{{ pc.catalog.name }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('product') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('product_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('product_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+
+{% endblock %}

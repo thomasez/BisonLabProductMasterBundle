@@ -1,0 +1,87 @@
+{% extends "BisonLabProductMasterBundle::layout.html.twig" %}
+
+{% block content %}
+
+<h1>Campaign</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ entity.name }}</td>
+        </tr>
+        <tr>
+            <th>Start date</th>
+            <td>
+                {% if entity.startdate  %}
+                {{ entity.startdate|date("Y-m-d H:i")  }}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>End date</th>
+            <td>
+                {% if entity.enddate  %}
+                {{ entity.enddate|date("Y-m-d H:i")  }}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>{{ entity.price }}</td>
+        </tr>
+        <tr>
+            <th>Min_price</th>
+            <td>{{ entity.minprice }}</td>
+        </tr>
+        <tr>
+            <th>Rebate_percent</th>
+            <td>{{ entity.rebatepercent }}</td>
+        </tr>
+        <tr>
+            <th>Rebate_amount</th>
+            <td>{{ entity.rebateamount }}</td>
+        </tr>
+        <tr>
+            <th>Campaign_period</th>
+            <td>{{ entity.campaignperiod }}</td>
+        </tr>
+        <tr>
+            <th>Campaign_period_amount</th>
+            <td>{{ entity.campaignperiodamount }}</td>
+        </tr>
+        <tr>
+            <th>Binding_period</th>
+            <td>{{ entity.bindingperiod }}</td>
+        </tr>
+        <tr>
+            <th>Binding_period_amount</th>
+            <td>{{ entity.bindingperiodamount }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('campaign') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('campaign_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('campaign_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+
+{% endblock %}

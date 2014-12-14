@@ -1,0 +1,42 @@
+{% extends "BisonLabProductMasterBundle::layout.html.twig" %}
+
+{% block content %}
+
+<h1>ProductCampaign list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Product</th>
+            <th>Campaign</th>
+            <th>Description</th>
+            <th>Created at</th>
+            <th>Updated at</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('productcampaign_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td><a href="{{ path('product_show', { 'id': entity.product.id }) }}">{{ entity.product.name }}</a></td>
+            <td><a href="{{ path('campaign_show', { 'id': entity.campaign.id }) }}">{{ entity.campaign.name }}</a></td>
+            <td>{{ entity.description }}</td>
+            <td>{{ entity.createdat|date("Y-m-d H:i")  }}</td>
+            <td>{{ entity.updatedat|date("Y-m-d H:i")  }}</td>
+            <td>                   <a href="{{ path('productcampaign_show', { 'id': entity.id }) }}">show</a>                   <a href="{{ path('productcampaign_edit', { 'id': entity.id }) }}">edit</a>            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('productcampaign_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
+
+{% endblock %}
