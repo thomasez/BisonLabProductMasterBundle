@@ -29,4 +29,6 @@ A product can have none or many accounts of either cost and revenue. (But please
 TODO
 ====
 
+* Make a working application out of this again. I'll probably wait for Symfony 3.0 until I do it. Unless someone needs it.
+
 * Implementing the CommonBundle into this. Especially the context system, since it's one of the main reasons of a product master to keep track of how/where/what in the different systems having products. Storing system, object name and external ID here will make it possible to send and retrieve data from each system having products.
